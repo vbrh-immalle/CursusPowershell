@@ -80,7 +80,7 @@ Je ziet dat we voor strings zowel single (`'`) als double (`"`) quotes kunnen ge
 ## Traditioneel rekenen met binaire en hexadecimale getallen
 
 Door `0x` voor een getal te plaatsen, wordt het beschouwd als een hexadecimaal getal.
-Op dezelfde wijze kunnen `0b` voor binaire getallen plaatsen (in Powershell Core)
+Op dezelfde wijze kunnen we `0b` voor binaire getallen plaatsen (enkel in Powershell Core).
 
 De **uitvoer** van Powershell is wel altijd decimaal!
 
@@ -104,12 +104,14 @@ Probeer het volgende:
 0b0011 + 0b0010
 ```
 
-Wanneer we Powershell toch de output willen laten tonen in het hexadecimaal of binair, kan de .Net-functie `[Convert]::ToString(getal)` ons helpen. Deze functie kan objecten (vaak *getallen*) omzetten naar een string maar kan als tweede parameter een **grondtal** (**base**) meekrijgen, b.v. `[Convert]::ToString(getal, 2)`
+Wanneer we Powershell toch de output willen laten tonen in het hexadecimaal of binair, kan de .Net-functie `[Convert]::ToString(getal)` ons helpen. Deze functie kan objecten (vaak *getallen*) omzetten naar een string maar kan als tweede parameter een **grondtal** (**base**) meekrijgen, b.v. `[Convert]::ToString(getal, 2)`.
 
-- **base 2**: getallen met grondtal 2 of dus de binaire notatie
-- **base 8**: getallen met grondtal 8 of dus de octale notatie
-- **base 10**: getallen met grondtal 10 of dus de decimale notatie
-- **base 16**: getallen met grondtal 16 of dus de hexadecimale notatie
+| base        | uitleg                                                      |
+|-------------|-------------------------------------------------------------|
+| **base 2**  | getallen met grondtal 2 of dus de **binaire** notatie       |
+| **base 8**  | getallen met grondtal 8 of dus de **octale** notatie        |
+| **base 10** | getallen met grondtal 10 of dus de **decimale** notatie     |
+| **base 16** | getallen met grondtal 16 of dus de **hexadecimale** notatie |
 
 - getallen (en berekeningen) weergeven als binaire getallen
 
@@ -128,13 +130,13 @@ Wanneer we Powershell toch de output willen laten tonen in het hexadecimaal of b
 
 De **Booleaanse algebra** is de algebra die met getallen werkt met maar 2 mogelijke waarden: **waar** en **onwaar** (**true** en **false**). Wanneer we rekenen met **bits** doen we dus eigenlijk Booleaanse algebra.
 
-Nu kan je 2 bits (in de stricte Booleaanse zin) niet zomaar optellen, aftrekken, vermenigvuldigen of delen. In de booleaanse algebra zijn er andere wel andere operaties mogelijk:
+Nu kan je 2 bits (in de stricte Booleaanse zin) niet zomaar optellen, aftrekken, vermenigvuldigen of delen. In de booleaanse algebra zijn er andere basis-operaties waaronder:
 
 - AND
 - OR
 - NOT (inversie)
 
-In Powershell zijn de mogelijke Booleaanse waarden gedefinieerd als `$true` en `$false`. De operatoren AND en OR zijn operatoren die 2 *operanden* hebben en in Powershell gedefinieerd als `-and` en `-or`. De NOT-operator heeft steeds maar 1 *operand* en is in Powershell gedefinieerd als `!`.
+In Powershell zijn de mogelijke Booleaanse waarden gedefinieerd als `$true` en `$false`. De operatoren AND en OR zijn operatoren die **2 operanden** hebben. Ze zijn in Powershell gedefinieerd als `-and` en `-or`. De NOT-operator heeft steeds maar **1 operand** en is in Powershell gedefinieerd als `!`.
 
 Tot zover de theorie. Het wordt veel duidelijker met enkele voorbeelden:
 
@@ -220,7 +222,7 @@ $true -eq $false
 
 Begrijp je nu (beter) waarom Booleaanse algebra zo belangrijk is in computersystemen? Het is ook handig dat een booleaanse waarde zeer compact kan worden voorgesteld, nl. door slechts **1 bit**!
 
-## Bitsgewijs rekenen
+## EXTRA: Bitsgewijs rekenen
 
 Bij het werken met binaire getallen (en **alle** getallen zijn in een computersysteem eigenlijk binaire getallen!), zijn er naast de klassieke rekenkundige operatoren +, -, *, / en % ook nog enkele bitsgewijze operatoren, waaronder:
 
@@ -261,6 +263,8 @@ Bij het werken met binaire getallen (en **alle** getallen zijn in een computersy
 
 De resultaten die je krijgt van de `-bnot`-operator zijn waarschijnlijk verwarrend. Hoe komen we plots aan negatieve getallen? Het zou ons nu te ver leiden om daar dieper op in te gaan maar het heeft te maken met hoe negatieve getallen in computersystemen worden opgeslagen (zie b.v. https://nl.wikipedia.org/wiki/Two%27s_complement) en dat Powershell (.Net) standaard met 32-bit getallen werkt.
 
+> Het werken met bitsgewijze operatoren is iets dat later, bij bijvoorbeeld de **subnetmaskers van IP-adressen**, van belang zal zijn. Voorlopig moet je je hoofd hier te hard over breken.
+
 ## Opdrachten
 
 ### 1
@@ -274,7 +278,7 @@ Speel dus een beetje een wetenschapper en ga zelf op onderzoek! Maak hypotheses 
 
 ### 2
 
-Je merkt dat een Powershell (en andere programmeertalen met een **interactieve prompt**, zoals b.v. ook Javascript in de webbrowser, Python en er bestaan zelfs REPL's voor C#).
+Je merkt dat Powershell (en andere programmeertalen met een **interactieve prompt**, zoals b.v. ook Javascript in de webbrowser, Python en er bestaan zelfs REPL's voor C#).
 
 > Zoek op wat een REPL is.
 
@@ -282,16 +286,23 @@ Open in een webbrowser de **development tools**. Alle rekenkundige berekeningen 
 
 ### 2
 
-Bekijk de help van de **wiskundige operatoren**:
+Wanneer je in Powershell 5 op Windows het commando `Update-Help` uitvoert (dat even tijd kan nodig hebben) wordt veel van de documentatie van Powershell naar je PC gedownload en kan je het benaderen met het commando `Get-Help`.
+
+> Je voert `Update-Help` best uit als Administrator zodat alle bestanden mogen weggeschreven worden.
+
+> `Update-Help` werkt niet altijd op alle platformen in Powershell Core.
+
+Weet echter dat je steeds alle documentatie ook online kan vinden. Je kan aan `Get-Help` zelfs de parameter `-Online` meegeven op de webbrowser automatisch te openen op de juiste pagina.
+
+Doorblader vluchtig de help-pagina's van de **wiskundige operatoren** en de **vergelijkingsoperatoren**. Je merkt dat de documentatie van Powershell een zeer grondig naslagwerk kan zijn.
 
     Get-Help about_Arithmetic_Operators
-
-### 3
-
-Bekijk de help van de **vergelijkingsoperatoren**:
-
     Get-Help about_Comparison_Operators
 
+Om een lijst op te vragen van alle (gedownloade) `about_`-documenten:
+
+    Get-Help about*
+   
 ### 4
 
 Zoek zelf informatie over de XOR-functie in het algemeen en de `-xor` (booleaanse) en `-bxor` (bitsgewijze) Powershell-operatoren in het bijzonder. De XOR-functie is een belangrijke bouwsteen voor heel wat algoritmes in de computerwetenschappen en elektronica!
