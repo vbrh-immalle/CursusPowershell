@@ -47,7 +47,7 @@ Ja kan Powershell dus ook opstarten vanaf de opdrachtprompt:
 
 ### 2
 
-Microsoft heeft de drempel voor het gebruik van Powershell uiteraard zo laag mogelijk gehouden voor mensen die DOS-commando's gewend zijn. Dit wil zeggen dat zeer veel oude DOS-commando's nog nog steeds werken (we zullen later zien hoe dit precies werkt). Je kan dus gerust de commando's die je al kent gebruiken, zoals:
+Microsoft heeft de drempel voor het gebruik van Powershell uiteraard zo laag mogelijk gehouden voor mensen die DOS-commando's gewend zijn. Dit wil zeggen dat zeer veel oude DOS-commando's nog steeds werken (we zullen later zien hoe dit precies werkt). Je kan dus gerust de commando's die je al kent gebruiken, zoals:
 
 - `dir` om de inhoud van een directory te zien
 - `cd` om de huidige directory te tonen of naar andere directories te gaan
@@ -76,12 +76,8 @@ Het kan steeds interessant zijn om de verschillen met Powershell 5 uit te prober
 
 ### 5
  
-Installeer modernere tools zoals Windows Terminal Preview en Visual Studio Code.
+Installeer modernere tools zoals **Windows Terminal (Preview)** en **Visual Studio Code**.
 
-> Beide programma's maken gebruik v.h. zogenaamde "command palette" (te openen met CTRL-(SHIFT)-P).
+> Een zeer handige functie in VSCode is het zogenaamde **command palette** (te openen met CTRL-(SHIFT)-P). Ook de Preview-versie van Windows Terminal experimenteert met een dergelijk *command palette*.
 
-Vergelijk de gebruikerservaring met de standaard tools, b.v. als je een stuk tekst uit de terminal wil kopiëren of plakken.
-
-### 6
-
-Bedenk voor jezelf nog andere opdrachten.
+Vergelijk de gebruikservaring met de standaard cmd- en powershell-vensters, b.v. als je een stuk tekst uit de terminal wil kopiëren of plakken.
