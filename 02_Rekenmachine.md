@@ -162,7 +162,7 @@ $false -or $false
 $false -or !$false
 ```
 
-Toegegeven, het nut van deze voorbeelden is misschien ook nog niet helemaal duidelijk. Het wordt misschien pas echt duidelijk als we ook **vergelijkingsoperatoren** toevoegen.
+Toegegeven, je ziet hier waarschijnlijk nog niet onmiddellijk het nut van. Het wordt misschien pas echt duidelijk als we ook **vergelijkingsoperatoren** toevoegen.
 
 ## Vergelijkingsoperatoren
 
@@ -178,9 +178,9 @@ Met vergelijkingsoperatoren bedoel we de zaken zoals:
 
 In Powershell gebruiken we er het `-`-teken voor gevolgd door een afkorting:
 
-- `eq`: equal to
-- `ne`: not equal to
-- `lt`: less than 
+- `-eq`: equal to
+- `-ne`: not equal to
+- `-lt`: less than 
 - ...
 
 En nu komt het: het resultaat van een bewerking met een vergelijkingsoperator **is altijd een Booleaanse waarde**: `$true` of `$false`!
@@ -217,6 +217,8 @@ $true -eq $false
 (3 -gt 1) -and (5 -gt 2)
 (3 -gt 1) -and (1 -gt 2)
 ```
+
+Begrijp je nu (beter) waarom Booleaanse algebra zo belangrijk is in computersystemen? Het is ook handig dat een booleaanse waarde zeer compact kan worden voorgesteld, nl. door slechts **1 bit**!
 
 ## Bitsgewijs rekenen
 
