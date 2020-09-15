@@ -80,7 +80,7 @@ Je ziet dat we voor strings zowel single (`'`) als double (`"`) quotes kunnen ge
 ## Traditioneel rekenen met binaire en hexadecimale getallen
 
 Door `0x` voor een getal te plaatsen, wordt het beschouwd als een hexadecimaal getal.
-Op dezelfde wijze kunnen `0b` voor binaire getallen plaatsen.
+Op dezelfde wijze kunnen `0b` voor binaire getallen plaatsen (in Powershell Core)
 
 De **uitvoer** van Powershell is wel altijd decimaal!
 
@@ -98,7 +98,7 @@ Probeer het volgende:
 0xA+5
 ```
 
-- 2 binaire getallen optellen
+- 2 binaire getallen optellen (werkt alleen in Powershell Core)
 
 ```
 0b0011 + 0b0010
