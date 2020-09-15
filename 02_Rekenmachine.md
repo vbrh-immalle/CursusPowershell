@@ -10,28 +10,39 @@ Laten we daarom eens enkele simpele berekeningen doen:
 
 - een som
 
-    3+4
-
+```
+3+4
+```
 - een verschil
 
-    10-8
+```
+10-8
+```
 
 - een vermenigvuldiging
 
-    4*3
+```
+4*3
+```
 
 - een reële deling
 
-    10/3
+```
+10/3
+```
 
 - de rest bij deling (modulo)
 
-    10%3
+```
+10%3
+```
 
 - wetenschappelijke notitie (macht van 10 achter de `e`)
 
-    3e3
-    1.8e-3
+```
+3e3
+1.8e-3
+```
 
 ## Math-functies van .Net
 
@@ -41,11 +52,15 @@ Powershell is geschreven bovenop het .Net-framework (hetzelfde framework dat de 
 
 - de constante **pi**
 
-    [Math]::pi
+```
+[Math]::pi
+```
 
 - 2 tot de 4e macht
 
-    [Math]::Pow(2, 4)
+```
+[Math]::Pow(2, 4)
+```
 
 ## Bewerkingen met andere dingen dan getallen
 
@@ -55,8 +70,10 @@ Hoewel een computer dus eigenlijk een rekenmachine is, bieden viel programmeerta
 
 - Plak 2 strings aan elkaar
 
-    "hallo " + "daar"
-    'hallo ' + "jij"
+```
+"hallo " + "daar"
+'hallo ' + "jij"
+```
 
 Je ziet dat we voor strings zowel single (`'`) als double (`"`) quotes kunnen gebruiken in Powershell.
 
@@ -71,15 +88,21 @@ Probeer het volgende:
 
 - een hexadecimaal getal omzetten naar decimaal
 
-    0x1F
+```
+0x1F
+```
 
 - de som van een hexadecimaal getal en een decimaal getal
 
-    0xA+5
+```
+0xA+5
+```
 
 - 2 binaire getallen optellen
 
-    0b0011 + 0b0010
+```
+0b0011 + 0b0010
+```
 
 Wanneer we Powershell toch de output willen laten tonen in het hexadecimaal of binair, kan de .Net-functie `[Convert]::ToString(getal)` ons helpen. Deze functie kan objecten (vaak *getallen*) omzetten naar een string maar kan als tweede parameter een **grondtal** (**base**) meekrijgen, b.v. `[Convert]::ToString(getal, 2)`
 
@@ -90,12 +113,16 @@ Wanneer we Powershell toch de output willen laten tonen in het hexadecimaal of b
 
 - getallen (en berekeningen) weergeven als binaire getallen
 
-    [Convert]::ToString(15, 2)
-    [Convert]::ToString(15+1, 2)
+```
+[Convert]::ToString(15, 2)
+[Convert]::ToString(15+1, 2)
+```
 
 - getallen weergeven als hexadecimale getallen
 
-    [Convert]::ToString(15, 16)
+```
+[Convert]::ToString(15, 16)
+```
 
 ## Operatoren die een booleaans resultaat geven
 
@@ -113,21 +140,27 @@ Tot zover de theorie. Het wordt veel duidelijker met enkele voorbeelden:
 
 - de Booleaanse waardes
 
-    $true
-    $false
+```
+$true
+$false
+```
 
 - het inverse
 
-    !$true
-    !$false
+```
+!$true
+!$false
+```
 
 - logische bewerkingen tussen 2 booleaanse waarden
 
-    $true -and $true
-    $true -and $false
-    $true -or $false
-    $false -or $false
-    $false -or !$false
+```
+$true -and $true
+$true -and $false
+$true -or $false
+$false -or $false
+$false -or !$false
+```
 
 Toegegeven, het nut van deze voorbeelden is misschien ook nog niet helemaal duidelijk. Het wordt misschien pas echt duidelijk als we ook **vergelijkingsoperatoren** toevoegen.
 
@@ -156,26 +189,34 @@ Enkele voorbeelden:
 
 - het vergelijken van 2 getallen
 
-    3 -lt 5
-    5 -lt 3
-    5 -eq 5
+```
+3 -lt 5
+5 -lt 3
+5 -eq 5
+```
 
 - het vergelijken van 2 strings
 
-    "hallo" -eq "hallo"
-    "hello" -ne "hallo"
+```
+"hallo" -eq "hallo"
+"hello" -ne "hallo"
+```
 
 - het vergelijken van 2 booleaanse waardes
 
-    $true -eq $true
-    $true -eq $false
+```
+$true -eq $true
+$true -eq $false
+```
 
 - we kunnen ook meerdere bewerkingen combineren met haakjes (de bewerking tussen haakjes wordt dan uiteraard eerst uitgevoerd)
 
-    (3 -gt 1) -eq $true
-    !(3 -gt 1)
-    (3 -gt 1) -and (5 -gt 2)
-    (3 -gt 1) -and (1 -gt 2)
+```
+(3 -gt 1) -eq $true
+!(3 -gt 1)
+(3 -gt 1) -and (5 -gt 2)
+(3 -gt 1) -and (1 -gt 2)
+```
 
 ## Bitsgewijs rekenen
 
@@ -189,24 +230,32 @@ Bij het werken met binaire getallen (en **alle** getallen zijn in een computersy
 
 - het ANDen van 2 getallen in binaire notatie (en de omzetting naar een binair resultaat)
 
-    0b0011 -band 0b0111
-    [Convert]::ToString(0b0011 -band 0b0111, 2)
+```
+0b0011 -band 0b0111
+[Convert]::ToString(0b0011 -band 0b0111, 2)
+```
 
 - het ORen van 2 getallen in binaire notatie
 
-    0b0011 -bor 0b0111
+```
+0b0011 -bor 0b0111
+```
 
 - het ORen van 2 getallen in hexadecimale notatie
 
-    0x3 -bor 0x7
-    [Convert]::ToString(0x3 -bor 0x7, 16)
+```
+0x3 -bor 0x7
+[Convert]::ToString(0x3 -bor 0x7, 16)
+```
 
 - het inverteren van (de bits van) een getal
 
-    -bnot 0xf
-    -bnot 0
-    -bnot 0b01010101
-    [Convert]::ToString(-bnot 0b01010101, 2)
+```
+-bnot 0xf
+-bnot 0
+-bnot 0b01010101
+[Convert]::ToString(-bnot 0b01010101, 2)
+```
 
 De resultaten die je krijgt van de `-bnot`-operator zijn waarschijnlijk verwarrend. Hoe komen we plots aan negatieve getallen? Het zou ons nu te ver leiden om daar dieper op in te gaan maar het heeft te maken met hoe negatieve getallen in computersystemen worden opgeslagen (zie b.v. https://nl.wikipedia.org/wiki/Two%27s_complement) en dat Powershell (.Net) standaard met 32-bit getallen werkt.
 
