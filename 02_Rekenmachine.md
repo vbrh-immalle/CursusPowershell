@@ -3,6 +3,7 @@
 ## Traditioneel rekenen met decimale getallen
 
 Computer betekent (bijna) letterlijk nog altijd **rekenmachine**.
+Het spreekt voor zich dat dit dus ook kan in een (moderne) shell.
 
 > **to compute** (Engels): berekenen
 
@@ -306,3 +307,7 @@ Om een lijst op te vragen van alle (gedownloade) `about_`-documenten:
 ### 4
 
 Zoek zelf informatie over de XOR-functie in het algemeen en de `-xor` (booleaanse) en `-bxor` (bitsgewijze) Powershell-operatoren in het bijzonder. De XOR-functie is een belangrijke bouwsteen voor heel wat algoritmes in de computerwetenschappen en elektronica!
+
+### 5
+
+Bedenk voor jezelf nog andere opdrachten. Je mag deze steeds delen met de rest v.d. klas (via Teams, OneNote, ...)
