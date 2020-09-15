@@ -293,17 +293,19 @@ Wanneer je in Powershell 5 op Windows het commando `Update-Help` uitvoert (dat e
 
 > `Update-Help` werkt niet altijd op alle platformen in Powershell Core.
 
-Weet echter dat je steeds alle documentatie ook online kan vinden. Je kan aan `Get-Help` zelfs de parameter `-Online` meegeven op de webbrowser automatisch te openen op de juiste pagina.
+Weet echter dat je steeds alle documentatie ook online kan vinden. Je kan aan `Get-Help` zelfs de parameter `-Online` meegeven om de webbrowser automatisch te openen op de juiste pagina.
 
 Doorblader vluchtig de help-pagina's van de **wiskundige operatoren** en de **vergelijkingsoperatoren**. Je merkt dat de documentatie van Powershell een zeer grondig naslagwerk kan zijn.
 
     Get-Help about_Arithmetic_Operators
-    Get-Help about_Comparison_Operators
+    Get-Help about_Comparison_Operators -Online
 
 Om een lijst op te vragen van alle (gedownloade) `about_`-documenten:
 
     Get-Help about*
-   
+
+Open zelf nog een andere about-pagina, al dan niet met `-Online`.
+
 ### 4
 
 Zoek zelf informatie over de XOR-functie in het algemeen en de `-xor` (booleaanse) en `-bxor` (bitsgewijze) Powershell-operatoren in het bijzonder. De XOR-functie is een belangrijke bouwsteen voor heel wat algoritmes in de computerwetenschappen en elektronica!
