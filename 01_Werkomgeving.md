@@ -64,7 +64,9 @@ Bekijk de argumenten die je kan meegeven aan `cmd.exe` en `powershell.exe`:
 - `cmd /?`
 - `powershell /?`
 
-In de beginjaren van Powershell met `cmd.exe` vaak nog ouderwetse (maar noodzakelijke) commando's uitgevoerd in een Powershell-script.
+In de beginjaren van Powershell werden met `cmd.exe` vaak nog ouderwetse (maar noodzakelijke) commando's uitgevoerd vanuit een Powershell-script. En soms gebeurde het ook omgekeerd dat vanuit een opdrachtprompt `powershell.exe` werd aangeroepen voor een sporadisch (maar handig) Powershell-commando.
+
+Vandaag de dag is er minder en minder de noodzaak om terug te vallen op `cmd.exe`.
 
 ### 4
 
