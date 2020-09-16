@@ -1,6 +1,6 @@
 # Inleiding
 
-Shells (met hun CLI) zijn al van de begindagen de manier bij uitstek om mensen toe te laten met computers te *interfacen*. Toegegeven, een GUI kan (met zijn muisbesturing) soms efficiënter zijn maar werken met een shell heeft ook zo zijn voordelen, zoals bij het automatiseren van repetitieve taken. Toch werd de CLI door Microsoft lang in het verdomhoekje geduwd. Wie (soms noodgedwongen) op Windows met de terminal moest werken, was verplicht de archaïsche werking er maar bij te nemen en keek soms afgunstig met een half oog naar wat mensen deden op OSX en Linux.
+Shells (met hun CLI) zijn al van de begindagen de manier bij uitstek om mensen toe te laten met computers te *interfacen*. Toegegeven, een GUI kan (met zijn muisbesturing) soms efficiënter zijn maar werken met een shell heeft ook zo zijn voordelen, zoals bij het automatiseren van repetitieve taken. Toch werd de CLI door Microsoft een hele tijd in het verdomhoekje geduwd. Wie het laatste decennium (soms noodgedwongen) op Windows op de console moest werken, was verplicht de redelijk archaïsche werking er maar bij te nemen. Gebruikers keken soms afgunstig naar wat sommigen met de terminals op OSX en Linux konden doen.
 
 > **CLI**: Command Line Interface
 
