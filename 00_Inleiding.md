@@ -40,7 +40,7 @@ In 2016 (10 jaar later) kwam de eerste open-source variant van Powershell uit. D
 
 In de open-source-gemeenschap heerst nog steeds veel scepsis t.o.v. Microsoft en dat zal altijd zo zijn. Een bedrijf opereert primair immers vanuit economische overwegingen en zal daar soms sluwe strategiën voor hanteren. Daardoor zul je mensen tegenkomen die uit een soort *politieke overweging* (b.v. de fanatiekste aanhangers van de GNU-licentie) geen gebruik meer willen maken van GitHub en (bij de overname door Microsoft) overgeschakeld zijn naar GitLab. Onder meer om die reden zie je - voorlopig - ook maar weinig mensen die zich Powershell als een volwaardige Linux-shell kunnen inbeelden. Als we echter de politieke redenen opzij zetten en vanuit technisch oogpunt naar Powershell kijken, moeten we toch vaststellen dat Microsoft vandaag de dag serieuze investeringen doet om de CLI-ervaring een nieuwe - positieve - richting uit te sturen...
 
-In de loop van deze cursus zal hopelijk duidelijk worden welke zaken Powershell zoals "beter" doet:
+In de loop van deze cursus zal hopelijk duidelijk worden welke zaken Powershell zoal "beter" doet:
 
 - Het is een object geöriënteerde shell: niet alles is gewoon maar *platte* tekst
 - De hulppagina's van elk commando hebben (bijna) steeds duidelijke voorbeelden 
