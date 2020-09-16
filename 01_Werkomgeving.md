@@ -21,7 +21,7 @@ Op https://aka.ms/powershell kan je de laatste versies van Powershell downloaden
 Ook het vermelden waard zijn:
 
 - **Windows Terminal Preview** (te downloaden van de Windows Store): het werd hoog tijd dat Microsoft zijn ouderwetse opdrachtprompt/Powershell-venster van een upgrade ging voorzien!
-- **Visual Studio Code**: een all-round zeer goede tekst-editor met ook te installeren extensions voor Powershell
+- **Visual Studio Code**: een zeer goede all-round tekst-editor met ook te installeren extensions voor Powershell
 
 **.Net Core**, **Powershell Core** en **Visual Studio Code** zijn cross-platform: je kan ze op Windows, OS X of Linux draaien.
 
