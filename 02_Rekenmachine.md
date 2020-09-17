@@ -47,7 +47,7 @@ Laten we daarom eens enkele simpele berekeningen doen:
 
 ## Math-functies van .Net
 
-Powershell is geschreven bovenop het .Net-framework (hetzelfde framework dat de meeste in C# geschreven programma's gebruiken). Dit maakt dat we - mits een speciale *syntax* - ook .Net-functies (en constanten, classes, ...) kunnen gebruiken.
+Powershell (Core) is grotendeels geschreven in C# bovenop het .Net (Core)-framework. Dit maakt dat we - mits een speciale *syntax* - ook .Net-functies (en constanten, classes, ...) kunnen gebruiken.
 
 > **syntax**: hiermee worden de specifieke details van een programmeertaal mee bedoeld, zoals de specifieke plaatsting van (rechte of ronde) haakjes, accolades, punten, puntkomma's, ...
 
@@ -65,7 +65,7 @@ Powershell is geschreven bovenop het .Net-framework (hetzelfde framework dat de 
 
 ## Bewerkingen met andere dingen dan getallen
 
-Hoewel een computer dus eigenlijk een rekenmachine is, bieden viel programmeertalen manieren aan om de rekenkundige operatoren ook te gebruiken op andere soorten objecten dan getallen, b.v. **strings**. (Men noemt dit ook wel **operator overloading** omdat de `+`-operator een extra functionaliteit krijgt: in het geval van strings is dit het *aan elkaar plakken* of *concateneren*.)
+Veel programmeertalen ondersteunen het om de rekenkundige operatoren te gebruiken op andere types van objecten dan (gehele of reëele) getallen. Zo kan je ook 2 **strings** aan elkaar plakken met de `+`-operator. (Men noemt dit ook wel **operator overloading** omdat de `+`-operator een extra functionaliteit krijgt: in het geval van strings is dit het *aan elkaar plakken* of *concateneren*.)
 
 > **String**: letterlijk betekent dit een strengel of dus een aaneenschakeling. In de context van programmeertalen bedoelen we hier bijna altijd een aaneenschakeling van **karakters** mee. We zullen later nog spreken over verschillende *encodings* van karakters (zoals *ASCII* en *Unicode*)
 
@@ -81,7 +81,7 @@ Je ziet dat we voor strings zowel single (`'`) als double (`"`) quotes kunnen ge
 ## Traditioneel rekenen met binaire en hexadecimale getallen
 
 Door `0x` voor een getal te plaatsen, wordt het beschouwd als een hexadecimaal getal.
-Op dezelfde wijze kunnen we `0b` voor binaire getallen plaatsen (enkel in Powershell Core).
+Op dezelfde wijze kunnen we `0b` voor binaire getallen plaatsen (*enkel in Powershell Core*).
 
 De **uitvoer** van Powershell is wel altijd decimaal!
 
@@ -99,7 +99,7 @@ Probeer het volgende:
 0xA+5
 ```
 
-- 2 binaire getallen optellen (werkt alleen in Powershell Core)
+- 2 binaire getallen optellen (*werkt alleen in Powershell Core*)
 
 ```
 0b0011 + 0b0010
@@ -139,6 +139,8 @@ Nu kan je 2 bits (in de stricte Booleaanse zin) niet zomaar optellen, aftrekken,
 
 In Powershell zijn de mogelijke Booleaanse waarden gedefinieerd als `$true` en `$false`. De operatoren AND en OR zijn operatoren die **2 operanden** hebben. Ze zijn in Powershell gedefinieerd als `-and` en `-or`. De NOT-operator heeft steeds maar **1 operand** en is in Powershell gedefinieerd als `!`.
 
+> Denk zelf even na waarom het *logisch* (pun intended ;-)) is dat de **NOT**-operator slechts **1 operand** heeft en **AND** en **OR** er **2** nodig hebben!
+
 Tot zover de theorie. Het wordt veel duidelijker met enkele voorbeelden:
 
 - de Booleaanse waardes
@@ -169,22 +171,16 @@ Toegegeven, je ziet hier waarschijnlijk nog niet onmiddellijk het nut van. Het w
 
 ## Vergelijkingsoperatoren
 
-Met vergelijkingsoperatoren bedoel we de zaken zoals:
+Dit zijn enkele vergelijkingsoperatoren in Powershell (steeds voorafgegaan door het `-`-teken):
 
-- groter dan
-- groter dan of gelijk aan
-- kleiner dan
-- kleiner dan of gelijk aan
-- gelijk aan
-- niet gelijk aan
-- ...
-
-In Powershell gebruiken we er het `-`-teken voor gevolgd door een afkorting:
-
-- `-eq`: equal to
-- `-ne`: not equal to
-- `-lt`: less than 
-- ...
+| operator | traditionele notatie | omschrijving              |
+|----------|----------------------|---------------------------|
+| -gt      | >                    | groter dan                |
+| -ge      | >=                   | groter dan of gelijk aan  |
+| -lt      | <                    | kleiner dan               |
+| -le      | <=                   | kleiner dan of gelijk aan |
+| -eq      | ==                   | gelijk aan                |
+| -ne      | !=                   | niet gelijk aan           |
 
 En nu komt het: het resultaat van een bewerking met een vergelijkingsoperator **is altijd een Booleaanse waarde**: `$true` of `$false`!
 
@@ -285,7 +281,7 @@ Je merkt dat Powershell (en andere programmeertalen met een **interactieve promp
 
 Open in een webbrowser de **development tools**. Alle rekenkundige berekeningen die we hier in Powershell deden, kan je daar ook in Javascript doen. Uiteraard is de **syntax** soms wel anders (maar soms merkwaardig gelijkaardig)!
 
-### 2
+### 3
 
 Wanneer je in Powershell 5 op Windows het commando `Update-Help` uitvoert (dat even tijd kan nodig hebben) wordt veel van de documentatie van Powershell naar je PC gedownload en kan je het benaderen met het commando `Get-Help`.
 
@@ -306,10 +302,10 @@ Om een lijst op te vragen van alle (gedownloade) `about_`-documenten:
 
 Open zelf nog een andere about-pagina, al dan niet met `-Online`.
 
-### 4
+### 4 (Extra)
 
 Zoek zelf informatie over de XOR-functie in het algemeen en de `-xor` (booleaanse) en `-bxor` (bitsgewijze) Powershell-operatoren in het bijzonder. De XOR-functie is een belangrijke bouwsteen voor heel wat algoritmes in de computerwetenschappen en elektronica!
 
-### 5
+### 5 (Extra)
 
 Bedenk voor jezelf nog andere opdrachten. Je mag deze steeds delen met de rest v.d. klas (via Teams, OneNote, ...)
