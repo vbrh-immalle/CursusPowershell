@@ -20,13 +20,47 @@ Maar de handigheid schuilt hem hier in: met **de pijltjestoetsen naar boven en o
 
 ## TAB-toets: automatisch aanvullen
 
-:TODO:
+In traditionele shells bestaat automatisch aanvullen met `TAB` al een tijdje maar meestal bleef dat beperkt tot het aanvullen v.d. naam v.h. commando. Powershell gaat enkele stappen verder.
 
-We zullen zodadelijk laten zien hoe we het gedrag kunnen aanpassen en (afhankelijk van je persoonlijke voorkeur) **nog** handiger maken!
+Enkele voorbeelden...
+
+### Aanvullen van commando's
+
+Type `Get-` en druk verschillende malen op `TAB`. Alle commando's beginnend met `Get-` worden alfabetisch doorlopen.
+
+> Je kan ook steeds op `SHIFT+TAB` drukken om de suggesties in omgekeerde volgorde te doorlopen!
+
+Type `Get-H`. Nu krijg je uiteraard enkel aanvullingen van commando's die met `Get-H` beginnen.
+
+### Aanvullen van argumenten
+
+Tot zover nog niets héél bijzonders: we vulden gewoon de naam v.e. commando aan. Maar Powershell kan ook de **argumenten** aanvullen.
+
+Type `Get-History -` en druk op `TAB`. Je doorloopt nu het lijstje van alle argumenten die `Get-History` kent. Gebruik b.v. het `-Count`-argument en geef een getal mee om enkel een bepaald aantal commando's uit de history op te vragen.
+
+### Aanvullen van keuzemogelijkheden
+
+Powershell kan nog straffer uit de hoek komen! We moeten hiervoor wel even vooruit blikken op enkele commando's.
+
+Je weet al dit we met `dir` een lijst tonen van bestanden uit de huidige directory. Standaard worden een aantal kolommen getoond maar door de uitvoer van `dir` door te sluizen naar `Select-Object` (of verkort: `Select` of zelfs `?`), kunnen we zelf kiezen welke kolommen getoond worden.
+
+> Vooruitblik: de uitvoer van een commando *doorsluizen* naar een ander commando, doe je met de *pipe*-operator `|`.
+
+Probeer de volgende commando's:
+
+    dir | select Name
+    dir | Select-Object Name, Length
+    dir | select Name, Length, LastWriteTime
+
+En waar het nu natuurlijk om gaat, op het moment dat je de **kolomnamen** `Name` en `Length` gaat ingeven, kan je ook gewoon op `TAB` drukken om dit automatisch te laten aanvullen! Dit is echt een feature die op traditionele (tekst-gebaseerde) shells zeer moeilijk correct te implementeren valt. Bij Powershell volgt het op natuurlijke wijze uit de object-geöriënteerde aard waarin het (m.b.v. het DOTNET-framework) geschreven is.
+
+Type `dir | select ` en druk op `TAB`. Type vervolgens een komma (`,`) en druk weeer op `TAB`.
+
+> Uit te proberen: Wat gebeurt er als je geen spatie zet na `dir | select` en al op `TAB` drukt?
 
 ## Een overzicht van alle toetscombinaties
 
-Het is erg makkelijk om te laten zien wat PSReadLine allemaal kan.
+Het is erg makkelijk om te laten zien wat `PSReadLine` allemaal kan.
 
 Laten we beginnen met te tonen welke toetsen(combinaties) momenteel geconfigureerd zijn:
 
@@ -40,7 +74,7 @@ De toetsencombinaties worden gegroepeerd in 4 categorieën:
 | Cursor movement functions | functies om de cursor te verplaatsen                            |
 | History functions         | functies om de commando-geschiedenis te gebruiken               |
 | Completion functions      | functies om automatisch te laten aanvullen                      |
-| Miscellaneous functions   | een aantal functies die onder de noemen *overige* vallen        |
+| Miscellaneous functions   | een aantal functies die onder de noemer *overige* vallen        |
 | Selection functions       | functies om tekst te selecteren                                 |
 | Search functions          | functies om te zoeken in de huidige regel tekst                 |
 
@@ -48,29 +82,41 @@ Laten we even enkele handige commando's overlopen.
 
 ### Handige editing functies
 
-:TODO:
+De functies die gekoppeld zijn aan de shortcuts `Backspace`, `Delete`, `Ctrl+v`, ... spreken voor zich.
+
+Het verschil tussen `Ctrl+C` (met hoofdletter `C`) en `Ctrl+c` (met kleine letter `c`) verdient wat uitleg. `Ctrl-c` is traditioneel in vele shells namelijk een manier om een draaiend CLI-programma te onderbreken (*cancel*). Powershell heeft hiervoor de `CopyOrCancelLine`-functie voor bedacht die zal kopiëren als er tekst geselecteerd is maar anders de cancel-functie heeft.
+
+Onderschat het belang van de `Escape`-toets met zijn `RevertLine`-functie niet! Dit is de snelste manier om je regel terug leeg te maken zonder uit te voeren.
 
 ### Handige cursor functies
 
-:TODO:
+Ook hier zien we een aantal bekende shortcuts: `Home` met de `BeginningOfLine`-functie, `End` met de `EndOfLine`-functie, `Ctrl+LeftArrow`, ...
+
+De `Ctrl+]`-shortcut met de `GotoBrace`-functie verdient wat extra uitleg. We zullen later zien dat in Powershell vaak de *braces* (accolades: `{` en `}` gebruikt worden. Met deze functie kan je met 1 shortcut de cursor van de *opening* brace naar de *closing* brace laten springen. 
+
+Geef b.v. volgende tekst in:
+
+    blabla { braces blabla } more blabla
+
+En ga met de cursor voor 1 v.d. *braces* staan. Als je nu op `Ctrl+]` drukt, springt de cursor naar de andere brace!
 
 ### Handige history functies
 
-:TODO:
+We weten al dat de pijltjestoetsen ons door de history laten scrollen maar er is nog een gigantische tijdswinner die je zeker moet leren gebruiken: de `CTRL-R`-shortcut met de `ReverseSearchHistory`-functie.
+
+Wanneer je hierop drukt, krijg je een zogenaamd *incremental search*-veld waar je een gedeelte van een commando in kan typen en waar je zo commando's uit je history mee kan opzoeken. Er wordt gezocht in gans de regel dus niet enkel het begin. Dit is echt een krachtige functie om snel en efficiënt met een shell te werken! Zeker in combinatie met de `EndOfLine`-functie (standaard op de `END`-toets) waarmee je dan onmiddellijk dingen achteraan kan toevoegen. Of je kan natuurlijk snel gaan navigeren in een gevonden regel met functies zoals `NextWord` of `BackwardWord` (standaard `CTRL+LeftArrow/RightArrow`)
 
 ## Het gedrag v.d. TAB-toets aanpassen
 
-Laten we eerst kijken welke functie momenteel aan de `TAB`-toets is gekoppeld:
-
-    Set-PSReadLineKeyHandler -Chord TAB
+We zagen al in het overzicht dat de `TAB`-knop gekoppeld is aan de `TabCompleteNext`-functie. Handig maar het kan nog beter!
     
-> Het woord **Chord** kan vergeleken worden met het woord *akkoord* in de context van een keyboard-speler of pianist die ook meerdere toetsen tegelijk indrukt. `CTRL-N` is dus b.v. een *chord* omdat het bestaat uit 2 toetsen die tegelijk moeten ingedrukt worden.
-
-Laten we nu de functie `MenuComplete` koppelen:
+Met deze opdracht koppelen we de `MenuComplete`-functie aan de `TAB`-toets:
 
     Set-PSReadLineKeyHandler -Chord TAB -Function MenuComplete
 
-:TODO:
+> Het woord **Chord** kan vergeleken worden met het woord *akkoord* in de context van een keyboard-speler of pianist die ook meerdere toetsen tegelijk indrukt. `CTRL-N` is dus b.v. een *chord* omdat het bestaat uit 2 toetsen die tegelijk moeten ingedrukt worden.
+
+Deze menu-functie biedt heel wat meer functionaliteit. Wanneer je nu op `TAB` drukt, krijg je meteen een overzicht van alle mogelijkheden te zien en kan je met de pijltjestoetsen (of opnieuw met TAB) hieruit kiezen. Deze feature maakt Powershell al gedeeltelijk een *self-documenting* shell waarmee we bedoelen dat je al minder snel de help of de documentatie zal moeten raadplegen om de functiontaliteit van een commando te begrijpen.
     
 ## Opdrachten
 
@@ -86,7 +132,33 @@ TIPS:
 
 ### 2
 
-:TODO:
+Met `Set-PSReadLineOption -EditMode` kan je 3 verschillende manieren van werken instellen:
+
+- Windows
+- Emacs
+- Vi
+
+Emacs en Vi zijn tekst-editors met al een lange geschiedenis. (Zoek voor meer info.)
+Elk hebben ze hun zeer specifieke manier van werken en een set van shortcuts waar mensen aan gewend zijn geraakt en die ze nog steeds blijven gebruiken omdat ze bepaalde voordelen hebben. Het voordeel v.d. emacs-mode is b.v. dat een aantal toetsenbordfuncties (zoals die v.d. HOME-toets) kunnen benaderd worden zonder de vingers ver te hoeven verplaatsen.
+
+De eerder genoemende functie `ReverseSearchHistory` is eigenlijk een typische emacs-shortcut die is overgenomen in de Windows-mode.
+
+Volgende tabel vergelijkt enkele relatief vaak gebruikte snelkoppelingen:
+
+| functie         | normal      | emacs            |
+|-----------------|-------------|------------------|
+| begin van regel | Home        | CTRL-A           |
+| einde van regel | End         | CTRL-E           |
+| woord vooruit   | CTRL-rechts | ALT-F (forward)  |
+| woord achteruit | CTRL-links  | ALT-B (backward) |
+
+Zet `PSReadLine` in `Emacs`-mode en probeer deze snelkoppelingen uit. 
+
+Vergelijk ook de output `Get-PSReadLineKeyHandler` door 2 Powershell-vensters naast elkaar te zetten die elk in een andere EditMode staan. * *(TIP: In Windows Terminal Preview kan je het venster verticaal splitsen. Zoek op `vertical` of `split` in het command palette.)*
+
+### 3
+
+
 
 ### 5
 
