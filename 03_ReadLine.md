@@ -38,11 +38,21 @@ Tot zover nog niets héél bijzonders: we vulden gewoon de naam v.e. commando aa
 
 Type `Get-History -` en druk op `TAB`. Je doorloopt nu het lijstje van alle argumenten die `Get-History` kent. Gebruik b.v. het `-Count`-argument en geef een getal mee om enkel een bepaald aantal commando's uit de history op te vragen.
 
+> Alle argumenten voor commando's beginnen in Powershell met **1** liggend streepjes (ook wel *dash* genoemd: `-`). Oudere DOS-commando's gebruikten vaak de *slash* `/`. Linux-commando's gebruiken traditioneel 2 liggende streepjes, b.v. `--help` maar voorzien meestal ook in een verkorte versie die dan met slechts 1 streepje moet aangeroepen worden, b.v. `-h`.
+
 ### Aanvullen van keuzemogelijkheden
 
-Powershell kan nog straffer uit de hoek komen! We moeten hiervoor wel even vooruit blikken op enkele commando's.
+Powershell kan nog straffer uit de hoek komen! 
 
-Je weet al dit we met `dir` een lijst tonen van bestanden uit de huidige directory. Standaard worden een aantal kolommen getoond maar door de uitvoer van `dir` door te sluizen naar `Select-Object` (of verkort: `Select` of zelfs `?`), kunnen we zelf kiezen welke kolommen getoond worden.
+#### Vaste keuzemogelijkheden
+
+Sommige argumenten bestaan uit een keuzelijst. B.v. bij het `-EditMode`-argument van `Set-PSReadLineOption` kan je kiezen uit 3 modi (`Windows`, `Vi` en `Emacs`). In Opdracht 3 kan je hier meer over leren maar waar het nu om gaat, is dat Powershell deze keuzemogelijkheden ook kan aanvullen. Type het volgende: `Set-PSReadLineOption -EditMode ` (vergeet de spatie niet) en druk enkele malen op `TAB`. Je doorloopt nu deze 3 mogelijkheden.
+
+#### Keuzemogelijkheden afhankelijk v.h. type object
+
+We willen hier even vooruit blikken op enkele commando's die gebruik maken van *doorsluizen*, zodat je hopelijk nu al een voorproefje krijgt van de kracht van Powershell.
+
+Je weet al dit we met `dir` een lijst tonen van bestanden en directories uit de huidige directory. Standaard worden een aantal kolommen getoond maar door de uitvoer van `dir` door te sluizen naar `Select-Object` (of verkort: `Select`), kunnen we zelf kiezen welke kolommen getoond worden. Dit is mogelijk omdat Powershell *weet* wat het type v.d. objecten is die `dir` laat zien (dit zijn namelijk altijd bestanden of directories) en dus ook weet welke *properties* (of *kolommen*) deze objecten hebben.
 
 > Vooruitblik: de uitvoer van een commando *doorsluizen* naar een ander commando, doe je met de *pipe*-operator `|`.
 
@@ -52,7 +62,9 @@ Probeer de volgende commando's:
     dir | Select-Object Name, Length
     dir | select Name, Length, LastWriteTime
 
-En waar het nu natuurlijk om gaat, op het moment dat je de **kolomnamen** `Name` en `Length` gaat ingeven, kan je ook gewoon op `TAB` drukken om dit automatisch te laten aanvullen! Dit is echt een feature die op traditionele (tekst-gebaseerde) shells zeer moeilijk correct te implementeren valt. Bij Powershell volgt het op natuurlijke wijze uit de object-geöriënteerde aard waarin het (m.b.v. het DOTNET-framework) geschreven is.
+Waar het nu natuurlijk om gaat: op het moment dat je de **kolomnamen** `Name`, `Length` of `LastWriteTime` gaat ingeven, kan je op `TAB` drukken om automatisch aan te vullen!
+
+> Dit is echt een feature die op traditionele (tekst-gebaseerde) shells zeer moeilijk correct te implementeren valt. Bij Powershell volgt het op natuurlijke wijze uit de **object-geöriënteerde** aard waarin het (m.b.v. het DOTNET-framework) geschreven is. Powershell werkt met echte *objecten* die *properties* (*eigenschappen* of *kolomnamen*) hebben. Traditionele shells hebben dit begrip niet: voor hen is alles platte tekst en kan dit soort aanvullen enkel met complexe trucs die vaak niet 100% werken.
 
 Type `dir | select ` en druk op `TAB`. Type vervolgens een komma (`,`) en druk weeer op `TAB`.
 
@@ -104,7 +116,11 @@ En ga met de cursor voor 1 v.d. *braces* staan. Als je nu op `Ctrl+]` drukt, spr
 
 We weten al dat de pijltjestoetsen ons door de history laten scrollen maar er is nog een gigantische tijdswinner die je zeker moet leren gebruiken: de `CTRL-R`-shortcut met de `ReverseSearchHistory`-functie.
 
-Wanneer je hierop drukt, krijg je een zogenaamd *incremental search*-veld waar je een gedeelte van een commando in kan typen en waar je zo commando's uit je history mee kan opzoeken. Er wordt gezocht in gans de regel dus niet enkel het begin. Dit is echt een krachtige functie om snel en efficiënt met een shell te werken! Zeker in combinatie met de `EndOfLine`-functie (standaard op de `END`-toets) waarmee je dan onmiddellijk dingen achteraan kan toevoegen. Of je kan natuurlijk snel gaan navigeren in een gevonden regel met functies zoals `NextWord` of `BackwardWord` (standaard `CTRL+LeftArrow/RightArrow`)
+Wanneer je hierop drukt, krijg je een zogenaamd *incremental search*-veld waar je een gedeelte van een commando in kan typen en waar je zo commando's uit je history mee kan opzoeken. Je kan meerdere malen op `CTRL-R` drukken waardoor er verder in de geschiedenis zal worden gezocht. 
+
+> Met **incremental** search bedoelen we dat de zoek-opdracht meteen gestart (en verdergezet) wordt bij elke toetsdruk. Bij een gewone search-opdracht zou je eerst op `<ENTER>` moeten drukken. Ook de Find-optie in de meeste webbrowser (via `CTRL+F`) werkt tegenwoordig meestal *incrementeel*. Incremental search/find is veel handiger dan de traditionele versie!
+
+`ReverseSearchHistory` is echt een krachtige functie om snel en efficiënt met een shell te werken! Zeker in combinatie met de `EndOfLine`-functie (standaard op de `END`-toets) waarmee je dan onmiddellijk dingen achteraan kan toevoegen. Of je kan natuurlijk snel gaan navigeren in een gevonden regel met functies zoals `NextWord` of `BackwardWord` (standaard `CTRL+LeftArrow/RightArrow`)
 
 ## Het gedrag v.d. TAB-toets aanpassen
 
@@ -117,7 +133,7 @@ Met deze opdracht koppelen we de `MenuComplete`-functie aan de `TAB`-toets:
 > Het woord **Chord** kan vergeleken worden met het woord *akkoord* in de context van een keyboard-speler of pianist die ook meerdere toetsen tegelijk indrukt. `CTRL-N` is dus b.v. een *chord* omdat het bestaat uit 2 toetsen die tegelijk moeten ingedrukt worden.
 
 Deze menu-functie biedt heel wat meer functionaliteit. Wanneer je nu op `TAB` drukt, krijg je meteen een overzicht van alle mogelijkheden te zien en kan je met de pijltjestoetsen (of opnieuw met TAB) hieruit kiezen. Deze feature maakt Powershell al gedeeltelijk een *self-documenting* shell waarmee we bedoelen dat je al minder snel de help of de documentatie zal moeten raadplegen om de functiontaliteit van een commando te begrijpen.
-    
+
 ## Opdrachten
 
 ### 1
@@ -156,9 +172,21 @@ Zet `PSReadLine` in `Emacs`-mode en probeer deze snelkoppelingen uit.
 
 Vergelijk ook de output `Get-PSReadLineKeyHandler` door 2 Powershell-vensters naast elkaar te zetten die elk in een andere EditMode staan. * *(TIP: In Windows Terminal Preview kan je het venster verticaal splitsen. Zoek op `vertical` of `split` in het command palette.)*
 
+> Opgelet: eerder ingestelde keyhandler's (zoals b.v. `MenuComplete`) gaan verloren bij het wisselen van de `EditMode`!
+
 ### 3
 
+Standaard is `Ctrl+l` de shortcut om het terminal-venster te wissen. Zoek dit op zodat je de juiste functie-naam te weten komt. Gebruik vervolgens `Remove-PSReadLineKeyHandler` om deze shortcut te verwijderen. Test uit dat het wissen nu niet meer werkt!
 
+Koppel vervolgens de shortcut `ALT-C` aan deze wis-functie en test uit. Probeer zelf de naam van het benodigde commando te achterhalen.
+
+> TIP: Met `Get-Help Remove-PSReadlineKeyHandler` kan je de help vragen van dit commando. Voeg je ook nog het argument `-Examples` toe, dan krijg je voorbeelden te zien! Dit werkt uiteraard voor (bijna) alle commando's!
+
+> TIP: Uiteraard werkt ook TAB-completion nog steeds. Zeer handig bij het opzoeken van de `-Function` die je moet zoeken/kiezen!
+
+### 4
+
+TODO: `ShowToolTips` desactiveren en het verschil vaststellen
 
 ### 5
 
