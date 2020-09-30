@@ -52,7 +52,7 @@ Sommige argumenten bestaan uit een keuzelijst. B.v. bij het `-EditMode`-argument
 
 We willen hier even vooruit blikken op enkele commando's die gebruik maken van *doorsluizen*, zodat je hopelijk nu al een voorproefje krijgt van de kracht van Powershell.
 
-Je weet al dit we met `dir` een lijst tonen van bestanden en directories uit de huidige directory. Standaard worden een aantal kolommen getoond maar door de uitvoer van `dir` door te sluizen naar `Select-Object` (of verkort: `Select`), kunnen we zelf kiezen welke kolommen getoond worden. Dit is mogelijk omdat Powershell *weet* wat het type v.d. objecten is die `dir` laat zien (dit zijn namelijk altijd bestanden of directories) en dus ook weet welke *properties* (of *kolommen*) deze objecten hebben.
+Je weet al dat we met `dir` een lijst tonen van bestanden en directories uit de huidige directory. Standaard worden een aantal kolommen getoond maar door de uitvoer van `dir` door te sluizen naar `Select-Object` (of verkort: `Select`), kunnen we zelf kiezen welke kolommen getoond worden. Dit is mogelijk omdat Powershell *weet* wat het type v.d. objecten is die `dir` laat zien (dit zijn namelijk altijd bestanden of directories) en dus ook weet welke *properties* (of *kolommen*) deze objecten hebben.
 
 > Vooruitblik: de uitvoer van een commando *doorsluizen* naar een ander commando, doe je met de *pipe*-operator `|`.
 
