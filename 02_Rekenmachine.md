@@ -304,7 +304,7 @@ Open zelf nog een andere about-pagina, al dan niet met `-Online`.
 
 ### 4
 
-Powershell ondersteunt wat het zelf *numeric multipliers* noemt, b.v. `Get-Help about_numeric_literals`.
+Powershell ondersteunt wat het zelf *numeric multipliers* noemt, zie `Get-Help about_numeric_literals`.
 
 Probeer deze code uit
 
