@@ -302,10 +302,26 @@ Om een lijst op te vragen van alle (gedownloade) `about_`-documenten:
 
 Open zelf nog een andere about-pagina, al dan niet met `-Online`.
 
-### 4 (Extra)
+### 4
+
+Powershell ondersteunt wat het zelf *numeric multipliers* noemt, b.v. `Get-Help about_numeric_literals`.
+
+Probeer deze code uit
+
+    1kb
+    1MB
+    1GB
+    1TB
+    1pb
+
+Samen met de de traditionele wetenschappelijke notatie, kunnen we zo b.v. het percentueel verschil berekenen tussen een mega- en een mebibyte:
+
+    1mb/1e6
+
+### 5 (Extra)
 
 Zoek zelf informatie over de XOR-functie in het algemeen en de `-xor` (booleaanse) en `-bxor` (bitsgewijze) Powershell-operatoren in het bijzonder. De XOR-functie is een belangrijke bouwsteen voor heel wat algoritmes in de computerwetenschappen en elektronica!
 
-### 5 (Extra)
+### 6 (Extra)
 
 Bedenk voor jezelf nog andere opdrachten. Je mag deze steeds delen met de rest v.d. klas (via Teams, OneNote, ...)
