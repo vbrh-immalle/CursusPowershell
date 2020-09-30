@@ -170,7 +170,7 @@ Volgende tabel vergelijkt enkele relatief vaak gebruikte snelkoppelingen:
 
 Zet `PSReadLine` in `Emacs`-mode en probeer deze snelkoppelingen uit. 
 
-Vergelijk ook de output `Get-PSReadLineKeyHandler` door 2 Powershell-vensters naast elkaar te zetten die elk in een andere EditMode staan. * *(TIP: In Windows Terminal Preview kan je het venster verticaal splitsen. Zoek op `vertical` of `split` in het command palette.)*
+Vergelijk ook de output `Get-PSReadLineKeyHandler` door 2 Powershell-vensters naast elkaar te zetten die elk in een andere EditMode staan.  *(TIP: In Windows Terminal Preview kan je het venster verticaal splitsen. Zoek op `vertical` of `split` in het command palette.)*
 
 > Opgelet: eerder ingestelde keyhandler's (zoals b.v. `MenuComplete`) gaan verloren bij het wisselen van de `EditMode`!
 
