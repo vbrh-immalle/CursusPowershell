@@ -122,17 +122,30 @@ Wanneer je hierop drukt, krijg je een zogenaamd *incremental search*-veld waar j
 
 `ReverseSearchHistory` is echt een krachtige functie om snel en efficiënt met een shell te werken! Zeker in combinatie met de `EndOfLine`-functie (standaard op de `END`-toets) waarmee je dan onmiddellijk dingen achteraan kan toevoegen. Of je kan natuurlijk snel gaan navigeren in een gevonden regel met functies zoals `NextWord` of `BackwardWord` (standaard `CTRL+LeftArrow/RightArrow`)
 
-## Het gedrag v.d. TAB-toets aanpassen
+### Handige completion functies
 
-We zagen al in het overzicht dat de `TAB`-knop gekoppeld is aan de `TabCompleteNext`-functie. Handig maar het kan nog beter!
-    
+Naast `TAB` en `SHIFT-TAB` is ook `CTRL+SPACE` gedefinieerd voor een alternatieve (betere?) versie om commando's aan te vullen. De functie `MenuComplete` laat meteen een overzicht zien en onderaan wordt zelfs een stukje help-tekst van het commando weergegeven.
+
+> Deze feature maakt Powershell al gedeeltelijk een *self-documenting* shell waarmee we bedoelen dat je al minder snel de help of de documentatie zal moeten raadplegen om de functiontaliteit van een commando te begrijpen.
+
+Als je standaard liever deze functie gebruikt, kan je dit aanpassen.
+
+#### Het gedrag v.d. TAB-toets aanpassen
+   
 Met deze opdracht koppelen we de `MenuComplete`-functie aan de `TAB`-toets:
 
     Set-PSReadLineKeyHandler -Chord TAB -Function MenuComplete
 
 > Het woord **Chord** kan vergeleken worden met het woord *akkoord* in de context van een keyboard-speler of pianist die ook meerdere toetsen tegelijk indrukt. `CTRL-N` is dus b.v. een *chord* omdat het bestaat uit 2 toetsen die tegelijk moeten ingedrukt worden.
 
-Deze menu-functie biedt heel wat meer functionaliteit. Wanneer je nu op `TAB` drukt, krijg je meteen een overzicht van alle mogelijkheden te zien en kan je met de pijltjestoetsen (of opnieuw met TAB) hieruit kiezen. Deze feature maakt Powershell al gedeeltelijk een *self-documenting* shell waarmee we bedoelen dat je al minder snel de help of de documentatie zal moeten raadplegen om de functiontaliteit van een commando te begrijpen.
+### Overige functies
+
+Kijk zelf nog naar het overzicht van de "miscellaneous", "selection" en "search"-functies.
+
+Je ziet dat je b.v. met `CTRL+ALT+?` ook steeds het overzicht van alle gedefinieerde shortcuts kan opvragen.
+Ook handig kan zijn dat je `ALT+?` typt gevolgd door een shortcut. Powershell meldt dan wat deze shortcut doet. Dit kan b.v. ook van pas komen om te controleren of een shortcut tot bij Powershell komt of misschien al wordt afgevangen door de terminal.
+
+De `DigitArgument`-functies kunnen in sommige situaties ook handig zijn. Met `ALT+9` gevolgd door b.v. een `*`, zal je 9 keer het karakter `*` aan de huidige regel toevoegen.
 
 ## Opdrachten
 
@@ -186,8 +199,23 @@ Koppel vervolgens de shortcut `ALT-C` aan deze wis-functie en test uit. Probeer 
 
 ### 4
 
-TODO: `ShowToolTips` desactiveren en het verschil vaststellen
+Met volgende code kan je de tooltips (de stukjes helptekst) van de `MenuComplete`-functie uitschakelen:
+
+    Set-PSReadLineOption -ShowToolTips:$false
+
+Probeer nu met b.v. `CTRL+Spatie` de tekst `Get-H` aan te vullen. Verschijnen de tooltips?
+
+Zet de optie weer aan zetten kan op 2 manieren (omdat de default `$true` is)
+
+    Set-PSReadLineOption -ShowToolTips
+    Set-PSReadLineOption -ShowToolTips:$true
 
 ### 5
+
+Met `Get-PSReadLineKeyHandler -Unbound` krijg je een overzicht van ongebruikte PSReadLine-functies.
+
+Kijk eens na of er iets tussen zit dat je interessant lijkt en koppel zelf een snelkoppeling.
+
+### 6
 
 Bedenk voor jezelf nog andere opdrachten. Je mag deze steeds delen met de rest v.d. klas (via Teams, OneNote, ...)
