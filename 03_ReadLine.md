@@ -145,7 +145,7 @@ Kijk zelf nog naar het overzicht van de "miscellaneous", "selection" en "search"
 Je ziet dat je b.v. met `CTRL+ALT+?` ook steeds het overzicht van alle gedefinieerde shortcuts kan opvragen.
 Ook handig kan zijn dat je `ALT+?` typt gevolgd door een shortcut. Powershell meldt dan wat deze shortcut doet. Dit kan b.v. ook van pas komen om te controleren of een shortcut tot bij Powershell komt of misschien al wordt afgevangen door de terminal.
 
-De `DigitArgument`-functies kunnen in sommige situaties ook handig zijn. Met `ALT+9` gevolgd door b.v. een `*`, zal je 9 keer het karakter `*` aan de huidige regel toevoegen.
+De `DigitArgument`-functies kunnen in sommige situaties ook handig zijn. Met `ALT+9` gevolgd door b.v. een `*`, zal je 9 keer het karakter `*` aan de huidige regel toevoegen. Je kan `ALT` ook ingedrukt houden en meerdere cijfers typen.
 
 ## Opdrachten
 
@@ -154,6 +154,8 @@ De `DigitArgument`-functies kunnen in sommige situaties ook handig zijn. Met `AL
 Zoek op (of experimenteer) welke toetsen worden afgehandeld door jouw **terminal** (dus niet Powershell zelf!).
 
 Bedenk dus dat deze toetsen **niet** terecht zullen komen bij `PSReadLine` omdat ze al eerder worden afgevangen!
+
+> Een aantal toetsen (zoals de `WIN`-toets) zal zelfs **nog** vroeger afgevangen worden, nl. door Windows zelf.
 
 TIPS:
 - in het standaard opdrachtvenster van Windows kan je op het icoon linksboven klikken om in een menu een aantal snelkoppelingen te vinden i.v.m. kopiëren en plakken
@@ -217,5 +219,16 @@ Met `Get-PSReadLineKeyHandler -Unbound` krijg je een overzicht van ongebruikte P
 Kijk eens na of er iets tussen zit dat je interessant lijkt en koppel zelf een snelkoppeling.
 
 ### 6
+
+Met dit commando, druk je 3 sterretjes (asterisken) af:
+
+    echo ***
+
+Hoe kan je dit commando snel aanpassen zodat 80 asterisken worden afgeprint?
+
+> TIP: Gebruik de ALT-toets en de cijfer-toetsen (maar niet die uit het numerieke blok v.h. toetsenbord)
+
+
+### 7
 
 Bedenk voor jezelf nog andere opdrachten. Je mag deze steeds delen met de rest v.d. klas (via Teams, OneNote, ...)
