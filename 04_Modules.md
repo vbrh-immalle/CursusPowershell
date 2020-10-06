@@ -36,18 +36,18 @@ Een andere goede afspraak waaraan Powershell-commando's zich (liefst) moeten hou
 
 Het **noun** zegt dan uiteraard *waarop* we de actie v.h. werkwoord willen uitvoeren.
 
-| Commando      | Verb  | Noun      | Argumenten           | Instructie                                                                                             |
-|---------------|-------|-----------|----------------------|--------------------------------------------------------------------------------------------------------|
-| `Get-History` | `Get` | `History` |                      | Geef de inhoud v.d. commando-geschiedenis!                                                             |
-| `Get-History` | `Get` | `History` | `-Count 3`           | Geef de laatste 3 commando's uit de commando-geschiedenis!                                             |
-| `Get-Module`  | `Get` | `Module`  |                      | Geef alle modules die in deze Powershell-sessie al zijn ingeladen!                                     |
-| `Get-Module`  | `Get` | `Module`  | `-All`               | Geef alle modules die (automatisch bij eerste gebruik v.e. commando eruit) kunnen geïmporteerd worden! |
-| `Get-Module`  | `Get` | `Module`  | `-ListAvailable`     | Geef alle module die voor deze Powershell-versie op het systeem beschikbaar zijn!                      |
-| `Get-Command` | `Get` | `Command` |                      | Geef **alle** beschikbare commando's uit alle beschikbare modules!                                     |
-| `Get-Command` | `Get` | `Command` | `*module*`           | Geef alle beschikbare commando's waarin het woord `module` voorkomt!                                   |
-| `Get-Command` | `Get` | `Command` | `-Module PSReadLine` | Geef alle commando's uit de `PSReadLine`-module!                                                       |
-| `Get-Command` | `Get` | `Command` | `-Verb Get`          | Geef alle beschikbare commando's die `Get` als verb hebben!                                            |
-| `Get-Command` | `Get` | `Command` | `-Noun Module`       | Geef alle beschikbare commando's die `Module` als noun hebben!                                         |
+| Verb  | Noun      | Argumenten           | Instructie                                                                                             |
+|-------|-----------|----------------------|--------------------------------------------------------------------------------------------------------|
+| `Get` | `History` |                      | Geef de inhoud v.d. commando-geschiedenis!                                                             |
+| `Get` | `History` | `-Count 3`           | Geef de laatste 3 commando's uit de commando-geschiedenis!                                             |
+| `Get` | `Module`  |                      | Geef alle modules die in deze Powershell-sessie al zijn ingeladen!                                     |
+| `Get` | `Module`  | `-All`               | Geef alle modules die (automatisch bij eerste gebruik v.e. commando eruit) kunnen geïmporteerd worden! |
+| `Get` | `Module`  | `-ListAvailable`     | Geef alle modules die voor deze Powershell-versie op het systeem beschikbaar zijn!                      |
+| `Get` | `Command` |                      | Geef **alle** beschikbare commando's uit alle beschikbare modules!                                     |
+| `Get` | `Command` | `*module*`           | Geef alle beschikbare commando's waarin het woord `module` voorkomt!                                   |
+| `Get` | `Command` | `-Module PSReadLine` | Geef alle commando's uit de `PSReadLine`-module!                                                       |
+| `Get` | `Command` | `-Verb Get`          | Geef alle beschikbare commando's die `Get` als verb hebben!                                            |
+| `Get` | `Command` | `-Noun Module`       | Geef alle beschikbare commando's die `Module` als noun hebben!                                         |
 
 ## De return-waarde van commando's en de pipeline
 
@@ -69,7 +69,7 @@ Wanneer je b.v. `Get-History` uitvoert, zal standaard de tabel-formattering gebr
 
 Als alle commando's de `Verb-Noun`-syntax gebruiken, hoe zit het dan met commando's zoals `dir` en `cd`?
 
-Powershell wilde natuurlijk in de mate van het mogelijk *backward compatible* zijn met DOS en zelfs Linux-gebruikers tevreden stellen.
+Powershell wilde natuurlijk in de mate van het mogelijke *backward compatible* zijn met DOS en zelfs Linux-gebruikers tevreden stellen.
 Daarvoor heeft het een zeer slim `alias`-systeem bedacht.
 
 Met `Get-Alias` krijg je een overzicht van alle gedefinieerde alias's.
@@ -93,12 +93,41 @@ Merk op dat je de lijst van alias's ook kan vragen aan `Get-Command` (en dat je 
 
 ## Get-Help
 
-TODO: help-teksten interpreteren (de betekenis v.d. rechte haken)
+Leren van voorbeelden is altijd handig. Met het `Examples`-argument van `Get-Help` krijg je voor de meeste commando's uitgebreide help te zien:
 
     Get-Help Get-History -Examples
 
-TODO: de betekenis van `-InputObject` (de pipeline-operator!)
+Toch blijft het interessant om ook de *formele* help-uitleg beter te begrijpen. Wat wil dit precies zeggen?
 
+    Get-History [[-Id] <System.Int64[]>] [[-Count] <System.Int32>] [<CommonParameters>]
+
+Alles tussen rechte haken is **optioneel**. Het commando `Get-History` kan je dus ook uitvoeren **zonder** argumenten want alle argumenten staan tussen rechte haken.
+
+Daarnaast **mag** je b.v. het `Count`-argument meegeven maar dan ben je verplicht ook een geheel getal (van type `<System.Int32`>) mee te geven.
+
+    Get-History -Count 3
+
+We zullen hier later nog dieper op in gaan.
+
+## De kracht van `Get-Command`
+
+Het commando `Get-Command` kan je nog veel meer vertellen dan enkel een overzicht van beschikbare commando's.
+
+Het volledige pad opzoeken van een programma, b.v. `notepad` (opmerking: notepad staat op meerdere locaties, vandaar het `-All`-argument):
+
+    Get-Command -All notepad
+
+Een overzicht van alle programma's (applicaties):
+
+    Get-Command -CommandType Application
+
+Alle *Control Panel*-onderdelen in Windows 10:
+
+    Get-Command *.cpl
+
+Alle commando's met een `-Filter`-argument:
+
+    Get-Command -ParameterName Filter
 
 ## Een module downloaden van de powershellgallery
 
@@ -123,7 +152,7 @@ Maar je zal zien dat dit enkel werkt als je Administrator-rechten hebt omdat `In
 
     Install-Module -Name WriteAscii -Scope CurrentUser
 
-> De eerste keer dat je de powershell-gallery langs Powershell benaderd, moet je akkoord gaan om deze *untrusted repository* in de toekomst te vertrouwen! Uiteraard moeten we steeds voorzichtig zijn met van Internet gedownloade modules!
+> De eerste keer dat je de powershell-gallery langs Powershell benaderd, moet je akkoord gaan om deze *untrusted repository* in de toekomst te vertrouwen! Uiteraard moeten we steeds voorzichtig zijn met van het Internet gedownloade modules!
 
 Wanneer je nu controleert of de module al geladen is, is dit niet het geval:
 
@@ -135,19 +164,48 @@ Maar ze zou nu wel aanwezig moeten zijn:
 
 In de uitvoer van dit laatste commando zie je waar Powershell de modules fysiek heeft geplaatst. Omdat we als scope `CurrentUser` hebben gekozen, staat de module ergens in het gebruikersprofiel, b.v. onder `Document\WindowsPowershell\Modules`.
 
+De lijst met commando's die in deze module zit, kunnen we opvragen:
 
+    Get-Command -Module WriteAscii
+
+In deze module zit maar 1 commando met de naam `Write-Ascii`. We kunnen de help opvragen:
+
+    Get-Help Write-Ascii
+
+> Je leest b.v. dat het *lettertype* dat gebruikt zal worden, te vinden is in het bestand `letters.xml` in de directory v.d. module
+
+En we kunnen uiteindelijk de functie gebruiken:
+
+    Write-Ascii Boe! -BackgroundColor DarkCyan -ForegroundColor White
+
+> Vergeet niet dat je TAB-completion kan gebruiken, ook voor de kleuren! Kijk de broncode van deze module na om te controleren hoe de lijst met mogelijke kleuren gedefinieerd is.
+
+Tot slot kunnen we deze geladen module ook weer uit de sessie verwijderen en dit controleren:
+
+    Remove-Module writeascii
+    Get-Module
+
+Wanneer je nu terug de `Write-Ascii` uitvoert, zal automatisch de module weer geïmporteerd zijn:
+
+    Write-Ascii "Automatic imports" -ForegroundColor DarkRed
+    Get-Module
+
+Je kan de module ook zelf importeren voor eerste gebruik:
+
+    Remove-Module writeascii
+    Get-Module
+    Import-Module writeascii
+    Get-Module
 
 ## Modules vs Scripts
 
 Modules worden opgeslagen in bestanden met de extensie `.psm1`.
 
-Je zal ook bestanden met de extensie `.ps1` tegenkomen.
-
-
+Je zal ook bestanden met de extensie `.ps1` tegenkomen. Dit zijn gewone scripts.
 
 ## Opdrachten
 
-## XY
+## 1
 
 Zoek naar `approved powershell verbs` om de documentatie te vinden over wanneer je welke **verbs** moet gebruiken als je zelf commando's gaat schrijven. 
 
@@ -163,13 +221,17 @@ Je kan ook vinden met welke werkwoorden deze werkwoorden gepaard gaan:
 - `Disonnect`
 - ...
 
-## XY
+## 2
+
+Kijk in de help van `Get-Command` welke mogelijkheden er zijn voor het argument `-CommandType`. (Je kan dit natuurlijk ook te weten komen door auto-completion uit te voeren). Dit kan een vertrekpunt zijn om meer informatie op te zoeken over (nog onbekende) mogelijkheden in Powershell.
+
+## 3
 
 In de module `international` kun je op een Windows-machine een aantal *locale*-instellingen doen, zoals de geïnstalleerde toetsenborden en de taal-instellingen.
 
 Probeer zelf een nieuw toetsenbord toe te voegen voor b.v. qwerty.
 
-## XY
+## 4
 
 Waar bevinden de `psm1`-bestanden zich fysiek op schijf?
 
@@ -182,4 +244,8 @@ Controleer zelf de inhoud van de directory van de gedownloade `WriteAscii`-modul
 > - .Net (b.v. C#) (managed programmeertalen)
 > - b.v. C++ (unmanaged programmeertalen) - CIM / CDXML
 
+## 5
 
+Op http://www.figlet.org/ vind je andere ASCII-fonts.
+
+Beschouw het als een projectje voor een regenachtige dag om een script te schrijven dat automatisch de fonts die je daar kan downloaden omzet in het voor `Write-Ascii` gewenste formaat (zoals te vinden in `letters.xml`). Als dit helemaal lukt, loont het waarschijnlijk ook de moeite om dit op GitHub te zetten en misschien de schrijver v.d. `WriteAscii`-module te contacteren.
