@@ -46,7 +46,7 @@ Powershell kan nog straffer uit de hoek komen!
 
 #### Vaste keuzemogelijkheden
 
-Sommige argumenten bestaan uit een keuzelijst. B.v. bij het `-EditMode`-argument van `Set-PSReadLineOption` kan je kiezen uit 3 modi (`Windows`, `Vi` en `Emacs`). In Opdracht 3 kan je hier meer over leren maar waar het nu om gaat, is dat Powershell deze keuzemogelijkheden ook kan aanvullen. Type het volgende: `Set-PSReadLineOption -EditMode ` (vergeet de spatie niet) en druk enkele malen op `TAB`. Je doorloopt nu deze 3 mogelijkheden.
+Sommige argumenten bestaan uit een keuzelijst. B.v. bij het `-EditMode`-argument van `Set-PSReadLineOption` kan je kiezen uit 3 modi (`Windows`, `Vi` en `Emacs`). In Opdracht 2 kan je hier meer over leren maar waar het nu om gaat, is dat Powershell deze keuzemogelijkheden ook kan aanvullen. Type het volgende: `Set-PSReadLineOption -EditMode ` (vergeet de spatie niet) en druk enkele malen op `TAB`. Je doorloopt nu deze 3 mogelijkheden.
 
 #### Keuzemogelijkheden afhankelijk v.h. type object
 
