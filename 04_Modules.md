@@ -107,7 +107,26 @@ Daarnaast **mag** je b.v. het `Count`-argument meegeven maar dan ben je verplich
 
     Get-History -Count 3
 
-We zullen hier later nog dieper op in gaan.
+We zullen later nog dieper in gaan op de verschillende *types* van de argumenten.
+
+### `CommonParameters`
+
+De `[<CommonParameters>]` zijn argumenten die veel Powershell-commando's gemeenschappelijk hebben. Je kan er meer over lezen via
+
+    Get-Help about_commonparameters 
+
+### `InputObject`
+
+Kijk ook eens naar de help van een commando dat je gebruikt achter de doorsluisoperator (de pipeline-operator):
+
+    Get-Help Format-Table
+
+Dit toont:
+
+     Format-Table [[-Property] <System.Object[]>] [-AutoSize] [-DisplayError] [-Expan d {CoreOnly | EnumOnly | Both}] [-Force] [-GroupBy <System.Object>] [-HideTableH eaders] [-InputObject <System.Management.Automation.PSObject>] [-RepeatHeader] [ -ShowError] [-View <System.String>] [-Wrap] [<CommonParameters>]
+
+Hier zie je ook `InputObject`. Wanneer dat aanwezig is, weet je dat je commando kan gebruikt worden achter de pipeline-operator.
+
 
 ## De kracht van `Get-Command`
 
