@@ -6,7 +6,7 @@ Powershell heeft een redelijk duidelijke **modulaire** opbouw. Erg interessant i
 
 Uiteraard komt een Powershell (Core) installatie reeds met zijn eigen set van Powershell-modules. In de opdrachten zal je zelf op zoek gaan waar deze zich fysiek op schijf bevinden.
 
-## Ingeladen modules
+## Geïmporteerde modules
 
 Een *verse*, pas geopende Powershell heeft meestal nog (bijna) geen modules geladen. Je kan dit tonen met:
 
@@ -19,9 +19,43 @@ Maar vanaf dat je een commando ingeeft (b.v. `dir`), zal de bijhorende module zi
 
 We zien dat het commando `dir` dus eigenlijk behoort tot de module `Microsoft.Powershell.Management`.
 
+## Commando's
+
 Het is niet overdreven te zeggen dat een **commando** misschien wel het belangrijkste onderdeel is van Powershell. Deze commando's worden dus gegroepeerd in **modules**. Dit is een zeer ordentelijke manier van werken vergeleken met b.v. traditionele Linux-shells en het maakt dat we veel beter commando's (en hun documentatie) kunnen vinden.
 
 > In vele andere shells zijn de commando's meestal gewoon uitvoerbare bestanden die in het PATH worden gezet. (Als je nog niet weet wat het PATH is, zie later.)
+
+Met dit commando krijgen we een overzicht van alle beschikbare Powershell-commando's maar ook alle uitvoerbare bestanden die (via het `PATH`) bereikbaar zijn:
+
+    Get-Command
+
+## De kracht van `Get-Command`
+
+Het commando `Get-Command` kan je nog veel meer vertellen dan enkel een overzicht van beschikbare commando's.
+
+Het volledige pad opzoeken van een programma, b.v. `notepad` (opmerking: notepad staat op meerdere locaties, vandaar het `-All`-argument):
+
+    Get-Command -All notepad
+
+Een overzicht van alle programma's (applicaties):
+
+    Get-Command -CommandType Application
+
+> Dankzij *wildcards* (waarvan `*` veruit het meest gebruikte is), is `Get-Command` een zeer nuttig commando om de precieze naam van commando's te zoeken.
+
+Alle uitvoerbare zaken die met n beginnen:
+
+    Get-Command n*
+
+> Later gaan we dieper in op het verschil tussen o.a. een `Function` en een `CmdLet`.
+
+Alle *Control Panel*-onderdelen in Windows 10:
+
+    Get-Command *.cpl
+
+Alle commando's met een `-Filter`-argument:
+
+    Get-Command -ParameterName Filter
 
 ## Structuur van commando's
 
@@ -65,6 +99,10 @@ Wanneer je b.v. `Get-History` uitvoert, zal standaard de tabel-formattering gebr
 
     Get-History | Format-List
 
+`Format-List` en `Format-Table` kunnen ook nog parameters meekrijgen. Met volgende commando geef je b.v. de instructie om toch *alle* velden (**properties**) van de objecten die `Get-History` returnt, weer te geven in een tabel:
+
+    Get-History | Format-Table -Property *
+
 ## Aliases
 
 Als alle commando's de `Verb-Noun`-syntax gebruiken, hoe zit het dan met commando's zoals `dir` en `cd`?
@@ -72,16 +110,14 @@ Als alle commando's de `Verb-Noun`-syntax gebruiken, hoe zit het dan met command
 Powershell wilde natuurlijk in de mate van het mogelijke *backward compatible* zijn met DOS en zelfs Linux-gebruikers tevreden stellen.
 Daarvoor heeft het een zeer slim `alias`-systeem bedacht.
 
-Met `Get-Alias` krijg je een overzicht van alle gedefinieerde alias's.
-
-Wanneer je goed kijkt, zie je dat er maar liefst 3 alias's gedefinieerd zijn voor `Get-ChildItem`: `dir` (o.w.v. DOS), `ls` (o.w.v. Linux) en `gci`.
-
-Zo zijn volgende commando's hetzelfde dankzij alias's:
+Met `Get-Alias` krijg je een overzicht van alle gedefinieerde alias's:
 
     alias | fl
     Get-Alias | Format-List
 
-We blikken nog eens even vooruit en willen al even laten zien hoe je een lijst kan opvragen met de alias's voor een bepaald commando (in dit geval `Get-ChildItem`):
+Wanneer je goed kijkt, zie je dat er maar liefst 3 alias's gedefinieerd zijn voor `Get-ChildItem`: `dir` (o.w.v. DOS), `ls` (o.w.v. Linux) en `gci`.
+
+We blikken nog eens even vooruit en willen al even laten zien hoe je een lijst kan opvragen met enkel de alias's voor een bepaald commando (in dit geval `Get-ChildItem`):
 
     alias | where Definition -eq Get-ChildItem
 
@@ -89,7 +125,9 @@ Merk op dat je de lijst van alias's ook kan vragen aan `Get-Command` (en dat je 
 
     Get-Command -CommandType Alias
 
-> De aandachtige observator ziet dit dat laatste commando meer alias's toont, nl. ook diegenen van de modules die nog niet ingeladen zijn!
+> De aandachtige observator ziet dat `Get-Command -CommandType Alias` meer alias's toont dan `Get-Alias`, nl. ook diegenen van de modules die nog niet geïmporteerd zijn in de huidige sessie.
+
+MZoals wel vaker in een shell, zijn er verschillende manieren om aan de informatie te komen!
 
 ## Get-Help
 
@@ -97,7 +135,7 @@ Leren van voorbeelden is altijd handig. Met het `Examples`-argument van `Get-Hel
 
     Get-Help Get-History -Examples
 
-Toch blijft het interessant om ook de *formele* help-uitleg beter te begrijpen. Wat wil dit precies zeggen?
+Toch blijft het interessant om ook de *formele* help-uitleg beter te begrijpen. Wat wil het volgende precies zeggen?
 
     Get-History [[-Id] <System.Int64[]>] [[-Count] <System.Int32>] [<CommonParameters>]
 
@@ -107,11 +145,29 @@ Daarnaast **mag** je b.v. het `Count`-argument meegeven maar dan ben je verplich
 
     Get-History -Count 3
 
-We zullen later nog dieper in gaan op de verschillende *types* van de argumenten.
+> We zullen later nog dieper in gaan op de verschillende *types* van de argumenten en van variabelen in het algemeen.
+
+Je kan `Get-Help` ook gebruiken om meer informatie over specifieke argumenten van commando's op te vragen, b.v.
+
+    Get-Help Get-Module -Parameter All
+    Get-Help Get-Module -Parameter ListAvailable
+
+En uiteraard kan je hulp vragen over `Get-Help`:
+
+    Get-Help Get-Help
+
+Naast `Get-Command` is `Get-Help` één van de nuttigste commando's om de mogelijkheden van Powershell te ontdekken!
 
 ### `CommonParameters`
 
-De `[<CommonParameters>]` zijn argumenten die veel Powershell-commando's gemeenschappelijk hebben. Je kan er meer over lezen via
+De `[<CommonParameters>]` zijn argumenten die veel Powershell-commando's gemeenschappelijk hebben en die dus bij bijna elk commando zal tegenkomen, o.a.
+
+- `ErrorAction`: wat moet gebeuren als er een fout optreedt in een script of commando (stoppen, verdergaan, ...)
+- `WhatIf`: om een zogenaamde *dry run* uit te voeren, zodat de gebruiker kan zien wat er *zou* gebeuren als het commando *echt* wordt uitgevoerd
+- `Confirm`: om de gebruiker om confirmatie (ja/neen/...) te vragen
+- `Verbose`: om meer informatie te tonen over wat het commando aan het doen is
+
+Je kan meer over lezen over deze gemeenschappelijke parameters met:
 
     Get-Help about_commonparameters 
 
@@ -123,30 +179,13 @@ Kijk ook eens naar de help van een commando dat je gebruikt achter de doorsluiso
 
 Dit toont:
 
-     Format-Table [[-Property] <System.Object[]>] [-AutoSize] [-DisplayError] [-Expan d {CoreOnly | EnumOnly | Both}] [-Force] [-GroupBy <System.Object>] [-HideTableH eaders] [-InputObject <System.Management.Automation.PSObject>] [-RepeatHeader] [ -ShowError] [-View <System.String>] [-Wrap] [<CommonParameters>]
+    Format-Table [[-Property] <System.Object[]>] [-AutoSize] [-DisplayError] [-Expand {CoreOnly | EnumOnly | Both}] [-Force] [-GroupBy <System.Object>] [-HideTableHeaders] [-InputObject <System.Management.Automation.PSObject>] [-RepeatHeader] [ -ShowError] [-View <System.String>] [-Wrap] [<CommonParameters>]
+
+Je ziet dus ook:
+
+    Format-Table [-InputObject <System.Management.Automation.PSObject>]
 
 Hier zie je ook `InputObject`. Wanneer dat aanwezig is, weet je dat je commando kan gebruikt worden achter de pipeline-operator.
-
-
-## De kracht van `Get-Command`
-
-Het commando `Get-Command` kan je nog veel meer vertellen dan enkel een overzicht van beschikbare commando's.
-
-Het volledige pad opzoeken van een programma, b.v. `notepad` (opmerking: notepad staat op meerdere locaties, vandaar het `-All`-argument):
-
-    Get-Command -All notepad
-
-Een overzicht van alle programma's (applicaties):
-
-    Get-Command -CommandType Application
-
-Alle *Control Panel*-onderdelen in Windows 10:
-
-    Get-Command *.cpl
-
-Alle commando's met een `-Filter`-argument:
-
-    Get-Command -ParameterName Filter
 
 ## Een module downloaden van de powershellgallery
 
