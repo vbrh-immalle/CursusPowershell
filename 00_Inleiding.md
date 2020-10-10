@@ -46,3 +46,19 @@ In de loop van deze cursus zal hopelijk duidelijk worden welke zaken Powershell 
 - De hulppagina's van elk commando hebben (bijna) steeds duidelijke voorbeelden 
 - De naamgeving v.d. commando's is consistent (telkens een *Verb* en een *Noun*)
 - ...
+
+# Over deze cursus
+
+Dit is niet *zomaar* een cursus Powershell. Als je snel aan de slag wil om praktische zaken met Powershell te doen, kan je elders betere handleidingen vinden! Deze cursus tracht om van de grond af de basisprincipes van Powershell grondig te bestuderen waarbij meteen ook de basisprincipes van het .Net framework aan bod komen. Daarenboven wordt aandacht besteed aan computer-architectuur! Deze cursus kadert immers in een bredere opleiding (informaticabeheer) waar ook kennis wordt gemaakt met programmeren (in C#) en de werking van computer-hardware en zelfs digitale en analoge elektronica. In deze opleiding komt dan ook een zeer ruim spectrum van IT-onderwerpen aan bod waarbij aandacht wordt besteed aan de gelaagdheid van deze materie:
+
+- Elektriciteit
+- Analoge elektronica
+- Digitale (asynchrone en synchrone) elektronica
+- Computer-architectuur (bussen, geheugens, CPU)
+- (Netwerk-architectuur (netwerktoestellen, Internet))
+- Operating Systems
+- Compilers / Interpreters (programmeertalen) en bibliotheken (libraries)
+- Databases (SQL)
+- Applicaties
+
+Het materiaal uit deze cursus is dan ook voornamelijk bedoeld om de student een hulpmiddel aan te reiken waarmee geëxperimenteerd kan worden om nuttig te zijn voor onderwerpen uit het ganse spectrum: van b.v. binaire getallen berekenen t.e.m. het Operating System beheren en applicaties aan te sturen zoals Excel.
