@@ -304,6 +304,8 @@ Controleer zelf de inhoud van de directory van de gedownloade `WriteAscii`-modul
 
 ## 5
 
-Op http://www.figlet.org/ vind je andere ASCII-fonts.
+Op http://www.figlet.org/ is de hoofdpagina van de figlet-applicatie en hier vind je andere ASCII-fonts.
 
 Beschouw het als een projectje voor een regenachtige dag om een script te schrijven dat automatisch de fonts die je daar kan downloaden omzet in het voor `Write-Ascii` gewenste formaat (zoals te vinden in `letters.xml`). Als dit helemaal lukt, loont het waarschijnlijk ook de moeite om dit op GitHub te zetten en misschien de schrijver v.d. `WriteAscii`-module te contacteren.
+
+Waarschijnlijk makkelijker is om deze figlet-implementatie in Powershell uit te proberen: https://www.powershellgallery.com/packages/Figlet/0.1.0. Deze module kan je dus ook weer installeren, uitproberen, bestuderen, ...
