@@ -48,13 +48,23 @@ We kunnen dit ook korter schrijven omdat `Get-Date` de meegegeven string zal *pa
     $startDate = Get-Date 2020-09-01
     $endDate = Get-Date 2020-10-01
 
-Hiermee kunnen we nu zoeken in alle bestanden:
+Hiermee kunnen we nu zoeken in alle bestanden (zie later):
 
     dir -Recurse | where {$_.LastWriteTime -ge $startDate -and $_.LastWriteTime -le $endDate}
 
 Als je geen tijdelijke variabelen (`$startDate` en `$endDate`) wil maken, kan dit ook:
 
     dir -Recurse | where {$_.LastWriteTime -ge $(Get-Date 2020-09-01) -and $_.LastWriteTime -le $(Get-Date 2020-10-01)}
+
+## Tijdstippen formatteren
+
+Voorbeeld:
+
+    Get-Date -Format "yyyy-dd-MM"
+
+Zie:
+
+    get-help get-date -Parameter format
 
 ## Opdrachten
 

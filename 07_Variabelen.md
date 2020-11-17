@@ -153,6 +153,15 @@ Wat gebeurt hier?
     "3"+2
     [int]"3"+2
 
+Je zou het door Powershell laten invullen van variabelen (of commando's!) in een **double-quoted string** ook als casten kunnen beschouwen:
+
+    $str = "De waarde van x is $x."
+    "Het is vandaag $(get-date -format "yyyy-dd-MM")"
+
+Bij een single quoted string, wordt de string letterlijk 
+    
+    $str = 'De waarde van x is $x.'
+
 ## Collecties
 
 Deze collecties zijn hetzelfde:
