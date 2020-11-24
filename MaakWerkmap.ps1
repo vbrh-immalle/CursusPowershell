@@ -37,3 +37,19 @@ Set-Content -Path $(Join-Path -Path $werkmappad -ChildPath groet.txt) -Value "Ha
         Add-Content -Path $filenaam -Value $woord
     }
 }
+
+function Add-FF {
+    <#
+    .SYNOPSIS
+        Voegt de byte 0xFF toe aan een bestand waardoor het 1 byte groter wordt.
+        Controleer met Format-Hex!
+    .DESCRIPTION
+        Voegt de byte 0xFF toe aan een bestand waardoor het 1 byte groter wordt.
+        Controleer met Format-Hex!
+        Deze functie heeft weinig nut behalve voor educatieve doeleinden.
+    .PARAMETER Path
+        Het bestand waaraan je de byte 0xFF wil toevoegen.
+    #>
+    Param([System.IO.FileInfo]$Path)
+    Add-Content -Encoding Byte -Path $Path -Value ([byte]0xFF)
+}
