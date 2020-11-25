@@ -60,11 +60,16 @@ Als je geen tijdelijke variabelen (`$startDate` en `$endDate`) wil maken, kan di
 
 Voorbeeld:
 
-    Get-Date -Format "yyyy-dd-MM"
+    Get-Date -Format "yyyy-MM-dd"
+
+Opgelet: 
+
+- `MM` staat voor de **maand**
+- `mm` staat voor de **minuut**
 
 Zie:
 
-    get-help get-date -Parameter format
+    Get-Help Get-Date -Parameter Format
 
 ## Opdrachten
 
