@@ -18,6 +18,10 @@ Behalve het standaard Powershell-venster, is ook de grafische **Powershell ISE**
 
 Op https://aka.ms/powershell kan je de laatste versies van Powershell downloaden waaronder ook **Powershell Core** dat geschreven is in **.Net Core** en daardoor niet enkel op het Windows-platform werkt.
 
+Misschien wel de handigste manier om steeds de laatste versie van Powershell te hebben, is om de **dotnet SDK** (https://dotnet.microsoft.com/download) te installeren en daarmee Powershell als een *tool* te downloaden en te upgraden:
+
+    dotnet install tool --global powershell
+
 Ook het vermelden waard zijn:
 
 - **Windows Terminal Preview** (te downloaden van de Windows Store): het werd hoog tijd dat Microsoft zijn ouderwetse opdrachtprompt/Powershell-venster van een upgrade ging voorzien!
@@ -81,3 +85,13 @@ Installeer modernere tools zoals **Windows Terminal (Preview)** en **Visual Stud
 > Een zeer handige functie in VSCode is het zogenaamde **command palette** (te openen met CTRL-(SHIFT)-P). Ook de Preview-versie van Windows Terminal experimenteert met een dergelijk *command palette*.
 
 Vergelijk de gebruikservaring met de standaard cmd- en powershell-vensters, b.v. als je een stuk tekst uit de terminal wil kopiëren of plakken.
+
+### 6
+
+Download en installeer de dotnet-SDK via https://dotnet.microsoft.com/download (dit kan ook op macOS of Linux).
+
+Installeer vervolgens enkele tools, zoals Powershell of het (eerder grappige `dotnet-cowsay`):
+
+    dotnet tool install --global dotnet-cowsay
+    dotnet tool install --global powershell
+
