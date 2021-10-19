@@ -67,22 +67,28 @@ De elementen uit een lijst kan je ook met een **index** (beginnende vanaf `0`) o
 
 > We krijgen b.v. ook een lijst als we een overzicht opvragen v.d. netwerkkaarten in een systeem:
 >
->   Get-NetAdapter
+> ```
+> Get-NetAdapter
+> ```
 >
 > We kunnen deze lijst toekennen aan een variabele:
 >
->   $nics = Get-NetAdapter
+> ```
+> $nics = Get-NetAdapter
+> ```
 >
 > En vervolgens weergeven:
->
->   $nics
->   $nics[0]
->   $nics[1]
+> ```
+> $nics
+> $nics[0]
+> $nics[1]
+> ```
 
-Soms wil je variabelen (b.v. een getal) weergeven in het midden van een string. Wanneer je double quotes gebruikt voor strings (`"`) zal Powershell eventuele tegengekomen variabelen uitzoeken (resolven) en weergeven. Dit gebeurt niet wanneer je single quotes (`'`) gebruikt. Voorbeelden:
+Soms wil je variabelen (b.v. een getal) weergeven in het midden van een string. Wanneer je double quotes gebruikt voor strings (`"`) zal Powershell eventuele tegengekomen variabelen uitzoeken (*resolven*) en weergeven. Dit gebeurt niet wanneer je single quotes (`'`) gebruikt. Voorbeelden:
 
-    "De waarde van x is $x."
-    'De waarde van x is $x.'
+    $x = 3
+    "De waarde van x is $x."    # --> De waarde van x is 3.
+    'De waarde van x is $x.'    # --> De waarde van x is $x.
 
 ## Interessante variabelen
 
@@ -93,7 +99,9 @@ Versie van Powershell:
 > Alle variabelen die met `$PS` beginnen bevatten informatie over de configuratie van Powershell
 > B.v. de locatie v.d. powershell-executable:
 >
+> ```
 >   $PSHOME
+> ```
 
 Locatie van het opstartscript van deze gebruiker (dat elke keer bij het opstarten wordt uitgevoerd):
 
@@ -124,14 +132,22 @@ En nog beter:
     dir | gm | select -Unique TypeName
     [Math]::Pi | gm | select -unique typename
     
-Met `Get-Member` kunnen we dus behalve het type aflezen, ook ontdekken welke properties en methods dit object nog kent. Dit commando laat b.v. zien welke String-functies beschikbaar zijn.
-    
+Met `Get-Member` kunnen we dus behalve het type aflezen, ook ontdekken welke properties en methods dit object nog kent. 
+
+Dit commando laat b.v. zien welke String-functies beschikbaar zijn.
+
+    "hallo" | gm
+
+Of wanneer we dit gebruiken bij de conversiefunctie die we eerder gebruikte om een decimaal getal (`192`) om te zetten naar een string met de binaire (base `2`) cijfers (dus geen echt binair getal):
+
     [Convert]::ToString(192,2)
     [Convert]::ToString(192,2) | gm
 
-We kunnen b.v. de `PadLeft`-method aanroepen:
+We kunnen b.v. de `PadLeft`-method aanroepen (in dit geval om de string met binaire cijfers steeds uit te lijnen op 16 bits):
 
-    [Convert]::ToString(192,2).PadLeft(20)
+    [Convert]::ToString(192,2).PadLeft(16)
+    [Convert]::ToString(1024,2).PadLeft(16)
+    [Convert]::ToString(4095,2).PadLeft(16)
 
 Op dezelfde wijze, kunnen we ontdekken welke methods File- of Directory-objecten hebben:
 
@@ -150,15 +166,15 @@ De **string** `"3"` wordt omgezet naar een **int**:
 
 Wat gebeurt hier?
 
-    "3"+2
-    [int]"3"+2
+    "3"+2       # --> 32
+    [int]"3"+2  # --> 5
 
 Je zou het door Powershell laten invullen van variabelen (of commando's!) in een **double-quoted string** ook als casten kunnen beschouwen:
 
     $str = "De waarde van x is $x."
     "Het is vandaag $(get-date -format "yyyy-dd-MM")"
 
-Bij een single quoted string, wordt de string letterlijk 
+Bij een **single quoted string**, wordt de string letterlijk genomen en wordt de variabele $x niet gezien als variabele maar gewoon als een letterlijke string `$x` (een dollarteken en het karakter `x`):
     
     $str = 'De waarde van x is $x.'
 
@@ -169,9 +185,22 @@ Deze collecties zijn hetzelfde:
     1..4
     1,2,3,4
 
-We kunnen b.v. een collectie maken van alle mappen en bestanden in de huidige directory:
+Of als we ze toewijzen aan 2 variabelen, bevatten deze variabelen dezelfde objecten (in dit geval getallen):
 
-    $files = dir
+    $ns1 = 1..4
+    $ns2 = 1,2,3,4
+    $ns1
+    $ns2
+
+We kunnen b.v. een collectie maken van alle mappen en bestanden in de huidige directory.
+
+De lijst met File-objecten gereturnt door `dir` in `$files` opslaan:
+
+    $files = dir    
+
+`$files` weergeven:
+
+    $files
 
 ## Opdrachten
 
