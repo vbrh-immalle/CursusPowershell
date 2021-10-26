@@ -2,8 +2,8 @@
 
 ## Traditioneel rekenen met decimale getallen
 
-Computer betekent (bijna) letterlijk nog altijd **rekenmachine**.
-Het spreekt voor zich dat dit dus ook kan in een (moderne) shell.
+Computer betekent (bijna) letterlijk **rekenmachine**.
+Het spreekt voor zich dat dit je een (moderne) shell dus ook gewoon als rekenmachine kan gebruiken.
 
 > **to compute** (Engels): berekenen
 
@@ -38,7 +38,7 @@ Laten we daarom eens enkele simpele berekeningen doen:
 10%3
 ```
 
-- wetenschappelijke notitie (macht van 10 achter de `e`)
+- wetenschappelijke notatie (macht van 10 achter de `e`)
 
 ```
 3e3
@@ -67,7 +67,7 @@ Powershell (Core) is grotendeels geschreven in C# bovenop het .Net (Core)-framew
 
 Veel programmeertalen ondersteunen het om de rekenkundige operatoren te gebruiken op andere types van objecten dan (gehele of reëele) getallen. Zo kan je ook 2 **strings** aan elkaar plakken met de `+`-operator. (Men noemt dit ook wel **operator overloading** omdat de `+`-operator een extra functionaliteit krijgt: in het geval van strings is dit het *aan elkaar plakken* of *concateneren*.)
 
-> **String**: letterlijk betekent dit een strengel of dus een aaneenschakeling. In de context van programmeertalen bedoelen we hier bijna altijd een aaneenschakeling van **karakters** mee. We zullen later nog spreken over verschillende *encodings* van karakters (zoals *ASCII* en *Unicode*)
+> **String**: letterlijk betekent dit een strengel of dus een aaneenschakeling. In de context van programmeertalen bedoelen we hier bijna altijd een aaneenschakeling van **karakters** mee. We spreken over de verschillende *encodings* van karakters (zoals *ASCII*, *Unicode*, *UTF-8*, *UTF-16*, ...)
 
 - Plak 2 strings aan elkaar
 
@@ -275,11 +275,11 @@ Speel dus een beetje een wetenschapper en ga zelf op onderzoek! Maak hypotheses 
 
 ### 2
 
-Je merkt dat Powershell (en andere programmeertalen met een **interactieve prompt**, zoals b.v. ook Javascript in de webbrowser, Python en er bestaan zelfs REPL's voor C#).
+Powershell zouden we ook kunnen omschrijven als een **interactieve prompt** waar we dotnet-code kunnen uitvoeren. Zo'n interactive prompt wordt ook wel **REPL** genoemd. Zo bestaat er b.v. ook voor Python of Javascript een REPL. 
 
 > Zoek op wat een REPL is.
 
-Open in een webbrowser de **development tools**. Alle rekenkundige berekeningen die we hier in Powershell deden, kan je daar ook in Javascript doen. Uiteraard is de **syntax** soms wel anders (maar soms merkwaardig gelijkaardig)!
+Open in een webbrowser de **development tools** en vervolgens de **console**. Alle rekenkundige berekeningen die we hier in Powershell deden, kan je daar ook in Javascript doen. Uiteraard is de **syntax** soms wel anders (maar soms merkwaardig gelijkaardig)! Bijna elke webbrowser bevat dus een Javascript-REPL!
 
 ### 3
 
@@ -314,7 +314,7 @@ Probeer deze code uit
     1TB
     1pb
 
-Samen met de de traditionele wetenschappelijke notatie, kunnen we zo b.v. het percentueel verschil berekenen tussen een mega- en een mebibyte:
+Samen met de de traditionele wetenschappelijke notatie, kunnen we zo b.v. het **percentueel verschil** berekenen **tussen een mega- en een mebibyte**:
 
     1mb/1e6
 
